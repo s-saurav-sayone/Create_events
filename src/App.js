@@ -1,23 +1,43 @@
-import logo from './logo.svg';
+import React, {useEffect, useContext, useState} from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import Signup from './Pages/Signup'
+import Login from './Pages/Login'
+import Create from './Pages/Create'
+import {AuthContext, FirebaseContext } from './store/FirebaseContext'
 import './App.css';
 
+
+/**
+ * ?  =====Import Components=====
+ */
+import Home from './Pages/Home';
+
 function App() {
+  const {setUser} = useContext(AuthContext)
+  const {firebase} = useContext(FirebaseContext)
+  const [category, setcategory] = useState('All');
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      setUser(user)
+    })
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+        <Router>
+          <Route exact path='/'>
+            <Home cat = {category} setcat = {setcategory} /> 
+          </Route>
+          <Route exact path='/signup'>
+            <Signup /> 
+          </Route>
+          <Route exact path='/login'>
+            <Login /> 
+          </Route>
+          <Route exact path='/create'>
+            <Create /> 
+          </Route>
+        </Router>
     </div>
   );
 }
