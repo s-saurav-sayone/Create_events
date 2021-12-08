@@ -41,7 +41,7 @@ const handleKeypress = (e) => {
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
-        <div className="brandName">
+        <div className="brandName" onClick={()=>{history.push('/')}}>
          <img src="https://th.bing.com/th/id/OIP.RuRAosJwtDBYjJ7S7heNEgAAAA?pid=ImgDet&rs=1" alt="Myntra" className="M" width="50px" height="65px"/>
         </div>
        <div className="placeSearch">
@@ -67,20 +67,21 @@ const handleKeypress = (e) => {
           <Arrow></Arrow>
         </div>
         <div className="loginPage" >
-          <span>{user ? `Welcome ${user.displayName} `: 'Login'}</span>
+          <span><strong>{user ? `Welcome ${user.displayName} `: 'Login'}</strong></span>
           <hr />
           
-        </div>
+        </div><strong>
         {user && <span onClick={()=>{
           firebase.auth().signOut();
           history.push('/login')
         }}>Logout</span>}
+        </strong>
 
         <div className="sellMenu">
-          <SellButton></SellButton>
-          <div className="sellMenuContent">
-            <SellButtonPlus></SellButtonPlus>
-            <span>SELL</span>
+          
+          <div className="sellMenu" onClick={()=>{history.push('/create')}}>
+            
+            <button><span><strong>Add Products</strong></span></button>
           </div>
         </div>
       </div>

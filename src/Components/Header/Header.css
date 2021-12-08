@@ -4,6 +4,8 @@
   position: fixed;
   width: 100vw;
   z-index: 999;
+  background-color: #2687A9;;
+  
 }
 
 .headerChildDiv {
@@ -11,8 +13,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
-
 .placeSearch {
   width: 16em;
   height: 48px;

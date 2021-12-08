@@ -46,7 +46,7 @@ useEffect(()=>{
       className="card"
     >
       <div className="favorite">
-        <Heart></Heart>
+        
       </div>
       <div className="image">
         <img src={product.url} alt="" />
